@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Enrollment = () => {
 	return (
-		<div className='w-[calc(100%-50px)] h-full bg-[#E2E2E2] p-5'>
+		<div className='short-component'>
 			<div>
 				<h1 className='text-4xl font-semibold'>ENROLLMENT</h1>
 			</div>
@@ -37,7 +37,7 @@ const Enrollment = () => {
 					</div>
 				</div>
 				<div className='flex items-center gap-5'>
-					<Link to={'/'}>
+					<Link to={"/"}>
 						{" "}
 						<button className='py-2 px-10 bg-gray-500 text-black font-bold'>
 							Home

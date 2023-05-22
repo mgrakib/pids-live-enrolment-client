@@ -12,6 +12,10 @@
     @apply w-[550px] h-[400px] flex items-center
 }
 
+.short-component{
+    @apply w-[calc(100%-50px)] h-full bg-[#E2E2E2] p-5
+}
+
 .action-btn {
     @apply bg-white rounded-md flex items-center justify-center p-2 h-[60px] cursor-pointer border border-gray-500 hover:shadow-[1px_1px_2px_rgba(0,0,0,.5)] duration-150 text-3xl
 }

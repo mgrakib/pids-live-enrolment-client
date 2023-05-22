@@ -1,13 +1,59 @@
-import  { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import { getAuth, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import app from '../FireBase/FireBase';
+
 
 export const AuthContextAPI = createContext({});
 const AuthProvder = ({ children }) => {
+    const auth = getAuth(app);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // singup user 
+    const createUser = (email, password) => {
+		return createUserWithEmailAndPassword(auth, email, password);
+	};
 
+    // update user name and photo 
+    const updateUserNamePhoto = (dName, pURL) => {
+        return updateProfile(auth.currentUser, {
+			displayName: dName,
+			photoURL: pURL,
+		});
+    }
 
-    const authInfo = { user, loading };
+    // current user 
+    useEffect(() => {
+        const unSubscrib = onAuthStateChanged(auth, (currentUser) =>
+        {
+            setUser(currentUser)
+            setLoading(false)
+        }
+        )
+        
+        return () => unSubscrib;
+    }, [])
+    
+    // logout 
+    const logOut = () => {
+       return signOut(auth)
+    }
+
+    // singin 
+    const userLogIn = (email, password) => {
+        console.log(email, password)
+       return signInWithEmailAndPassword(auth, email, password);
+
+    }
+
+    const authInfo = {
+		user,
+		loading,
+		createUser,
+		updateUserNamePhoto,
+		logOut,
+		userLogIn,
+	};
     return (
         <AuthContextAPI.Provider value={authInfo}>
             {children}

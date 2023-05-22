@@ -1,9 +1,31 @@
-import { FaAngry, FaChartBar, FaKey, FaPollH, FaSearch, FaUserEdit, FaUserPlus } from "react-icons/fa";
+/** @format */
+
+import { useContext } from "react";
+import {
+	FaAngry,
+	FaChartBar,
+	FaKey,
+	FaPollH,
+	FaSearch,
+	FaUserEdit,
+	FaUserPlus,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContextAPI } from "../../../AuthProvder/AuthProvder";
 
 const Home = () => {
-    return (
-		<div className='w-[calc(100%-50px)] h-full bg-[#E2E2E2] p-5'>
+	const { logOut } = useContext(AuthContextAPI);
+	const handelLogOut = () => {
+		logOut()
+			.then(() => {
+				// Sign-out successful.
+			})
+			.catch(error => {
+				// An error happened.
+			});
+	};
+	return (
+		<div className='short-component'>
 			<div>
 				<h1 className='text-4xl font-bold'>Home</h1>
 			</div>
@@ -50,7 +72,10 @@ const Home = () => {
 				<div className='py-2 px-6 grid grid-cols-5 gap-6 border-t border-gray-500'>
 					{/* logout  */}
 					<div className='text-center'>
-						<div className='action-btn'>
+						<div
+							onClick={handelLogOut}
+							className='action-btn'
+						>
 							<FaAngry />
 						</div>
 						<p className='btn-text'>LOGOUT</p>
