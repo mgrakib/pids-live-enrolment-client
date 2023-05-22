@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .short-container{
-    @apply w-[550px] h-[400px] border border-black flex items-center
+    @apply w-[550px] h-[400px] flex items-center
+}
+
+.action-btn {
+    @apply bg-white rounded-md flex items-center justify-center p-2 h-[60px] cursor-pointer border border-gray-500 hover:shadow-[1px_1px_2px_rgba(0,0,0,.5)] duration-150 text-3xl
+}
+.btn-text {
+    @apply text-[12px] font-bold mt-2
 }

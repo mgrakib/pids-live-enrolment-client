@@ -2,21 +2,28 @@
 
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main/Main";
-import Home from "../components/Home/Home";
 import ErrorPage from "../components/Error/ErrorPage";
+import SortComponent from "../components/SortComponent/SortComponent";
+import Home from "../components/SortComponent/Home/Home";
 
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-        element: <Main />,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                path: '/',
-                element: <Home />
-            }
-        ]
+		element: <Main />,
+		errorElement: <ErrorPage />,
+		children: [
+			{
+				path: "/",
+                element: <SortComponent />,
+                children: [
+                    {
+                        path: '/',
+                        element: <Home />
+                    }
+                ]
+			},
+		],
 	},
 ]);
 
