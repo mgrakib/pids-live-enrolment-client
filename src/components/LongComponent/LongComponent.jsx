@@ -5,7 +5,6 @@ import { Outlet } from 'react-router-dom';
 
 const LongComponent = () => {
     const { enrollmentType } = useContext(AuthContextAPI)
-    console.log(enrollmentType);
     return (
 		<div
 			className='p-3 border

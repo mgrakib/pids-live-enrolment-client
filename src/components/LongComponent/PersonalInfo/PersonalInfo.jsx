@@ -7,40 +7,49 @@ import nationalityJSon from '../../../../public/nationality.json'
 import occupationJSon from '../../../../public/occupation.json'
 import natureOfInmateJSon from '../../../../public/natureOfInmate.json'
 import yesNoJSon from '../../../../public/yesNo.json'
-import { useRef, useState } from "react";
+import bloodGroupJSon from '../../../../public/bloodGroup.json'
+
+import { FaPlus } from "react-icons/fa";
+import { useState } from "react";
 const PersonalInfo = () => {
-    // handel gender 
-    const [genderValue, setGender] = useState("Select");
-    const handelGender = e => {
-        setGender(e.target.value);
+
+    console.log(bloodGroupJSon);
+    const value = {
+		gender: "r",
+		religion: "",
+		nationality: "",
+		occupation: "",
+		natureOfInamte: "",
+		hasDivision:""
+	};    
+    const [selectValue, setSelectValue] = useState(value);
+
+    const handelValue = e => {     
+         const { name, value } = e.target;
+    
+        setSelectValue(prevSelectedOptions => ({
+			...prevSelectedOptions,
+			[name]: value,
+        }));
+        console.log(selectValue);
     }
 
-    // handel religion
-    const [religionValue, setReligionValue] = useState('Select');
-    const handelReligion = e => {
-        setReligionValue(e.target.value)
-    }
-    // handel nationality 
-    const [nationalityValue, setNationalityValue] = useState('Bangladesh');
-    const handelNationality = e => {
-        setNationalityValue(e.target.value)
-    }
-    // handel Occupation 
-    const [occupationValue, setOccupationValue] = useState('Select');
-    const handelOccupation = e => {
-        setOccupationValue(e.target.value)
-    }
+    
+    const [textAreaValue, setInputValue] = useState("");
+    const [isValueEditable, setIsValueEditable] = useState(false);
+    const handleTextAreaKeyPress = event => {
+		const keyPress = event.key;
+		if (keyPress === "Backspace") {
+			setIsValueEditable(true);
+		} else {
+			setIsValueEditable(false);
+		}
+	};
 
-    // handel NatureOfInmate 
-    const [natureOfInmateValue, setNatureOfInmateValue] = useState('Select');
-    const handelNatureOfInmate = e => {
-        setNatureOfInmateValue(e.target.value)
-    }
-   
-    // handel HasDivision
-    const [hasDivisionValue, setHasDivisionValue] = useState('Select');
-    const handelHasDivision = e => {
-        setHasDivisionValue(e.target.value)
+    const handelTextAreaValueChange = e => {
+        if (isValueEditable) {
+            setInputValue(e.target.value);
+        }
     }
 
 
@@ -53,207 +62,581 @@ const PersonalInfo = () => {
 	} = useForm();
     const onSubmit = data => {
 
-        
-        // console.log(data)
+        data = { ...data, ...selectValue };
+        console.log(data)
     };
 
-	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
-			<div className='grid grid-cols-4 gap-16'>
-				<div>
-					{/* name  */}
-					<div className='flex flex-col'>
-						<label className='blcok'>
-							<span
-								className={`label-text require-field relative`}
+    return (
+		<>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<div className='grid grid-cols-4 gap-16'>
+					{/* first column */}
+					<div>
+						{/* name  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span
+									className={`label-text require-field relative`}
+								>
+									Name in English
+								</span>
+							</label>
+							<input
+								{...register("englishName")}
+								className='input-field'
+								required
+							/>
+						</div>
+
+						{/* gender  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span
+									className={`label-text require-field relative`}
+								>
+									Gender
+								</span>
+							</label>
+
+							<select
+								name='gender'
+								id=''
+								className='input-field'
+								onChange={handelValue}
 							>
-								Name in English
-							</span>
-						</label>
-						<input
-							{...register("englishName")}
-                            className='input-field'
-                            required
-						/>
-                    </div>
-                    
-					{/* gender  */}
-					<div className='flex flex-col'>
-						<label className='blcok'>
-							<span
-								className={`label-text require-field relative`}
+								{genderJSon.genders.map((g, i) => (
+									<option
+										key={i}
+										value={g}
+									>
+										{g}
+									</option>
+								))}
+							</select>
+						</div>
+
+						{/* religion  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span
+									className={`label-text require-field relative`}
+								>
+									Religion
+								</span>
+							</label>
+
+							<select
+								name='religion'
+								id=''
+								className='input-field'
+								onChange={handelValue}
 							>
-								Gender
-							</span>
-						</label>
+								{religionJSon.religions.map((r, i) => (
+									<option
+										key={i}
+										value={r}
+									>
+										{r}
+									</option>
+								))}
+							</select>
+						</div>
 
-						<select
-							name=''
-							id=''
-							className='input-field'
-							onChange={handelGender}
-						>
-							{genderJSon.genders.map((g, i) => (
-								<option
-									key={i}
-									value={g}
+						{/* age  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span
+									className={`label-text require-field relative`}
 								>
-									{g}
-								</option>
-							))}
-						</select>
-					</div>
+									Age
+								</span>
+							</label>
+							<input
+								{...register("example")}
+								className='input-field'
+								type='number'
+							/>
+						</div>
 
-					{/* religion  */}
-					<div className='flex flex-col'>
-						<label className='blcok'>
-							<span
-								className={`label-text require-field relative`}
+						{/* Nationality  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span
+									className={`label-text require-field relative`}
+								>
+									Nationality
+								</span>
+							</label>
+
+							<select
+								name='nationality'
+								id=''
+								className='input-field'
+								onChange={handelValue}
 							>
-								Religion
-							</span>
-						</label>
+								{nationalityJSon.nationality.map((n, i) => (
+									<option
+										key={i}
+										value={n}
+									>
+										{n}
+									</option>
+								))}
+							</select>
+						</div>
 
-						<select
-							name=''
-							id=''
-							className='input-field'
-							onChange={handelReligion}
-						>
-							{religionJSon.religions.map((r, i) => (
-								<option
-									key={i}
-									value={r}
-								>
-									{r}
-								</option>
-							))}
-						</select>
-					</div>
+						{/* occupationJSon  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text relative`}>
+									Occupation
+								</span>
+							</label>
 
-					{/* age  */}
-					<div className='flex flex-col'>
-						<label className='blcok'>
-							<span
-								className={`label-text require-field relative`}
+							<select
+								name='occupation'
+								id=''
+								className='input-field'
+								onChange={handelValue}
 							>
-								Age
-							</span>
-						</label>
-						<input
-							{...register("example")}
-							className='input-field'
-							type='number'
-						/>
-					</div>
+								{occupationJSon.occupation.map((o, i) => (
+									<option
+										key={i}
+										value={o}
+									>
+										{o}
+									</option>
+								))}
+							</select>
+						</div>
 
-					{/* Nationality  */}
-					<div className='flex flex-col'>
-						<label className='blcok'>
-							<span
-								className={`label-text require-field relative`}
+						{/* Nature of inmate  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text relative`}>
+									Nature of Inmate
+								</span>
+							</label>
+
+							<select
+								name='natureOfInamte'
+								id=''
+								className='input-field'
+								onChange={handelValue}
 							>
-								Nationality
-							</span>
-						</label>
+								{natureOfInmateJSon.natureOfInmate.map(
+									(n, i) => (
+										<option
+											key={i}
+											value={n}
+										>
+											{n}
+										</option>
+									)
+								)}
+							</select>
+						</div>
+						{/* Has division  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text relative`}>
+									Has Division
+								</span>
+							</label>
 
-						<select
-							name=''
-							id=''
-							className='input-field'
-							onChange={handelGender}
-						>
-							{nationalityJSon.nationality.map((n, i) => (
-								<option
-									key={i}
-									value={n}
-								>
-									{n}
-								</option>
-							))}
-						</select>
+							<select
+								name='hasDivision'
+								id=''
+								className='input-field'
+								onChange={handelValue}
+							>
+								{yesNoJSon.yesNo.map((n, i) => (
+									<option
+										key={i}
+										value={n}
+									>
+										{n}
+									</option>
+								))}
+							</select>
+						</div>
 					</div>
-
-					{/* occupationJSon  */}
-					<div className='flex flex-col'>
-						<label className='blcok'>
-							<span className={`label-text relative`}>
-								Occupation
-							</span>
-						</label>
-
-						<select
-							name=''
-							id=''
-							className='input-field'
-							onChange={handelGender}
-						>
-							{occupationJSon.occupation.map((o, i) => (
-								<option
-									key={i}
-									value={o}
+					{/* second column  */}
+					<div>
+						{/* bangla name  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span
+									className={`label-text require-field relative`}
 								>
-									{o}
-								</option>
-							))}
-						</select>
+									Name in Bangla
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
+						</div>
+
+						{/* Aliases  */}
+						<div className='flex flex-col relative'>
+							<label className='blcok'>
+								<span className={`label-text relative `}>
+									Aliases
+								</span>
+							</label>
+							<textarea
+								name=''
+								id=''
+								{...register("Aliases")}
+								value={textAreaValue}
+								className='textarea-field input-field relative'
+								required
+								onKeyDown={handleTextAreaKeyPress}
+								onChange={handelTextAreaValueChange}
+							></textarea>
+
+							<span
+								htmlFor='my-modal-3'
+								className='textarea-field-add'
+							>
+								<FaPlus />
+							</span>
+						</div>
+						{/* date of birth  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text relative`}>
+									Date of Birth
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+								type='date'
+							/>
+						</div>
+						{/* bangla name  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text relative`}>
+									National ID No
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
+						</div>
+						{/* Blood Group  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text relative`}>
+									Blood Group
+								</span>
+							</label>
+
+							<select
+								name='hasDivision'
+								id=''
+								className='input-field'
+								onChange={handelValue}
+							>
+								{bloodGroupJSon.bloodGroup.map((b, i) => (
+									<option
+										key={i}
+										value={b}
+									>
+										{b}
+									</option>
+								))}
+							</select>
+						</div>
+						{/* Aliases  */}
+						<div className='flex flex-col relative'>
+							<label className='blcok'>
+								<span className={`label-text relative `}>
+									Valuable Proparties
+								</span>
+							</label>
+							<textarea
+								name=''
+								id=''
+								{...register("Aliases")}
+								value={textAreaValue}
+								className='textarea-field input-field relative'
+								required
+								onKeyDown={handleTextAreaKeyPress}
+								onChange={handelTextAreaValueChange}
+							></textarea>
+
+							<span
+								htmlFor='my-modal-3'
+								className='textarea-field-add'
+							>
+								<FaPlus />
+							</span>
+						</div>
 					</div>
+					<div>
+						{/* Mobile No  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Mobile No
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								type='number'
+							/>
+						</div>
 
-					{/* Nature of inmate  */}
-					<div className='flex flex-col'>
-						<label className='blcok'>
-							<span className={`label-text relative`}>
-								Nature of Inmate
+						{/* Altarnative Mobile NO  */}
+						<div className='flex flex-col relative'>
+							<label className='blcok'>
+								<span className={`label-text relative `}>
+									Altarnative Mobile No
+								</span>
+							</label>
+							<textarea
+								name=''
+								id=''
+								{...register("Aliases")}
+								value={textAreaValue}
+								className='textarea-field input-field relative'
+								required
+								onKeyDown={handleTextAreaKeyPress}
+								onChange={handelTextAreaValueChange}
+							></textarea>
+
+							<span
+								htmlFor='my-modal-3'
+								className='textarea-field-add'
+							>
+								<FaPlus />
 							</span>
-						</label>
+						</div>
+						{/* Identify Mark  */}
+						<div className='flex flex-col relative'>
+							<label className='blcok'>
+								<span className={`label-text relative `}>
+									Identify Mark
+								</span>
+							</label>
+							<textarea
+								name=''
+								id=''
+								{...register("Aliases")}
+								value={textAreaValue}
+								className='textarea-field input-field relative'
+								required
+								onKeyDown={handleTextAreaKeyPress}
+								onChange={handelTextAreaValueChange}
+							></textarea>
 
-						<select
-							name=''
-							id=''
-							className='input-field'
-							onChange={handelGender}
-						>
-							{natureOfInmateJSon.natureOfInmate.map((n, i) => (
-								<option
-									key={i}
-									value={n}
-								>
-									{n}
-								</option>
-							))}
-						</select>
+							<span
+								htmlFor='my-modal-3'
+								className='textarea-field-add'
+							>
+								<FaPlus />
+							</span>
+						</div>
+
+						{/* Height  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Height
+								</span>
+							</label>
+							<div className='grid grid-cols-3 gap-1'>
+								<span className=''>
+									<input
+										{...register("banglaName")}
+										className='sort-input-field'
+										type='number'
+									/>
+
+									<span>ft</span>
+								</span>
+
+								<span className=''>
+									<input
+										{...register("banglaName")}
+										className='sort-input-field'
+										type='number'
+									/>
+
+									<span>inc</span>
+								</span>
+
+								<span className=''>
+									<input
+										{...register("banglaName")}
+										className='sort-input-field'
+										type='number'
+										readOnly
+									/>
+
+									<span>cm</span>
+								</span>
+							</div>
+						</div>
+						{/* Weight  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Weight
+								</span>
+							</label>
+							<div className='grid grid-cols-3 gap-1'>
+								<span className=''>
+									<input
+										{...register("banglaName")}
+										className='sort-input-field'
+										type='number'
+									/>
+
+									<span>kg</span>
+								</span>
+
+								<span className=''>
+									<input
+										{...register("banglaName")}
+										className='sort-input-field'
+										type='number'
+									/>
+
+									<span>po</span>
+								</span>
+							</div>
+						</div>
 					</div>
-					{/* Has division  */}
-					<div className='flex flex-col'>
-						<label className='blcok'>
-							<span className={`label-text relative`}>
-								Has Division
-							</span>
-						</label>
+					<div>
+						{/* Phone Number  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Phone Number
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								type='number'
+							/>
+						</div>
 
-						<select
-							name=''
-							id=''
-							className='input-field'
-							onChange={handelGender}
-						>
-							{yesNoJSon.yesNo.map((n, i) => (
-								<option
-									key={i}
-									value={n}
-								>
-									{n}
-								</option>
-							))}
-						</select>
+						{/* Email  */}
+						<div className='flex flex-col relative'>
+							<label className='blcok'>
+								<span className={`label-text relative `}>
+									Email
+								</span>
+							</label>
+							<textarea
+								name=''
+								id=''
+								{...register("Aliases")}
+								value={textAreaValue}
+								className='textarea-field input-field relative'
+								required
+								onKeyDown={handleTextAreaKeyPress}
+								onChange={handelTextAreaValueChange}
+							></textarea>
+
+							<span
+								htmlFor='my-modal-3'
+								className='textarea-field-add'
+							>
+								<FaPlus />
+							</span>
+						</div>
+						{/* Disabilities  */}
+						<div className='flex flex-col relative'>
+							<label className='blcok'>
+								<span className={`label-text relative `}>
+									Disabilities
+								</span>
+							</label>
+							<textarea
+								name=''
+								id=''
+								{...register("Aliases")}
+								value={textAreaValue}
+								className='textarea-field input-field relative'
+								required
+								onKeyDown={handleTextAreaKeyPress}
+								onChange={handelTextAreaValueChange}
+							></textarea>
+
+							<span
+								htmlFor='my-modal-3'
+								className='textarea-field-add'
+							>
+								<FaPlus />
+							</span>
+						</div>
+						{/* Remarks  */}
+						<div className='flex flex-col relative'>
+							<label className='blcok'>
+								<span className={`label-text relative `}>
+									Remarks
+								</span>
+							</label>
+							<textarea
+								name=''
+								id=''
+								{...register("Aliases")}
+								value={textAreaValue}
+								className='textarea-field input-field relative'
+								required
+								onKeyDown={handleTextAreaKeyPress}
+								onChange={handelTextAreaValueChange}
+							></textarea>
+
+							<span
+								htmlFor='my-modal-3'
+								className='textarea-field-add'
+							>
+								<FaPlus />
+							</span>
+						</div>
+						{/* Admin Comment  */}
+						<div className='flex flex-col relative'>
+							<label className='blcok'>
+								<span className={`label-text relative `}>
+									Admin Comment
+								</span>
+							</label>
+							<textarea
+								name=''
+								id=''
+								{...register("Aliases")}
+								value={textAreaValue}
+								className='textarea-field input-field relative'
+								required
+								onKeyDown={handleTextAreaKeyPress}
+								onChange={handelTextAreaValueChange}
+							></textarea>
+
+							<span
+								htmlFor='my-modal-3'
+								className='textarea-field-add'
+							>
+								<FaPlus />
+							</span>
+						</div>
 					</div>
 				</div>
-				<div>rakib</div>
-				<div>rakib</div>
-				<div></div>
-            </div>
-            <button type="submit">save</button>
-		</form>
+				<button type='submit'>save</button>
+			</form>
+		</>
 	);
 };
 

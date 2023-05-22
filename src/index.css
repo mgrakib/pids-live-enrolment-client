@@ -43,3 +43,13 @@ input[type=number]::-webkit-outer-spin-button {
     @apply border-b outline-none border-black bg-[#ffffffbc]  px-2 text-[14px] py-[2px] rounded-sm
 }
 
+.textarea-field {
+    @apply max-h-[70px] min-h-[70px]  outline-none w-[90%]
+}
+.textarea-field-add{
+    @apply border border-gray-700 absolute w-[20px] h-[20px] flex items-center justify-center rounded-sm -right-0 top-[26px] font-bold text-[10px] cursor-pointer
+}
+
+.sort-input-field{
+    @apply border-b outline-none border-black bg-[#ffffffbc]  px-2 text-[14px] py-[2px] rounded-sm w-[70%] mr-1
+}

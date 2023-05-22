@@ -54,10 +54,6 @@ const AuthProvder = ({ children }) => {
     // **************
 
 
-    console.log(enrollmentType);
-
-
-
 
     const authInfo = {
 		user,
