@@ -1,4 +1,5 @@
 import { FaAngry, FaChartBar, FaKey, FaPollH, FaSearch, FaUserEdit, FaUserPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
@@ -9,10 +10,13 @@ const Home = () => {
 			<div className='flex flex-col items-end justify-between  h-[calc(100%-40px)]'>
 				{/* enrolment section */}
 				<div className='py-2 px-6 grid grid-cols-5 gap-6'>
+					{/* enrollment  */}
 					<div className='text-center'>
-						<div className='action-btn'>
-							<FaUserPlus />
-						</div>
+						<Link to={"/enrollment"}>
+							<div className='action-btn'>
+								<FaUserPlus />
+							</div>
+						</Link>
 						<p className='btn-text'>ENROLL</p>
 					</div>
 					<div className='text-center'>

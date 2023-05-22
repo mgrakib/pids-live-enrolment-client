@@ -5,6 +5,7 @@ import Main from "../Layout/Main/Main";
 import ErrorPage from "../components/Error/ErrorPage";
 import SortComponent from "../components/SortComponent/SortComponent";
 import Home from "../components/SortComponent/Home/Home";
+import Enrollment from "../components/SortComponent/Enrollment/Enrollment";
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,9 @@ const router = createBrowserRouter([
                     {
                         path: '/',
                         element: <Home />
+                    }, {
+                        path: '/enrollment',
+                        element: <Enrollment />
                     }
                 ]
 			},
