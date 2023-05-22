@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { FaRegWindowClose, FaUserCheck } from 'react-icons/fa';
 import { AuthContextAPI } from '../../AuthProvder/AuthProvder';
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const LongComponent = () => {
     const { enrollmentType } = useContext(AuthContextAPI)
@@ -41,8 +41,18 @@ const LongComponent = () => {
 
 			<div className='grid md:grid-cols-9 gap-3 border-b border-gray-500'>
 				<div className='long-component-tab'>Biometric Info</div>
-				<div className='long-component-tab'>Personal Info</div>
-				<div className='long-component-tab'>Address</div>
+				<NavLink
+					to={"/inmate-enrollment/personal-info"}
+					className='long-component-tab'
+				>
+					Personal Info
+				</NavLink>
+				<NavLink
+					to={"/inmate-enrollment/address"}
+					className='long-component-tab'
+				>
+					Address
+				</NavLink>
 				<div className='long-component-tab'>Family</div>
 				<div className='long-component-tab'>Eucation</div>
 				<div className='long-component-tab'>Case Info</div>

@@ -11,6 +11,7 @@ import PrivateRoute from "../Private/PrivateRoute";
 import Register from "../components/Register/Register";
 import LongComponent from "../components/LongComponent/LongComponent";
 import PersonalInfo from "../components/LongComponent/PersonalInfo/PersonalInfo";
+import Address from "../components/LongComponent/Address/Address";
 
 
 const router = createBrowserRouter([
@@ -54,8 +55,12 @@ const router = createBrowserRouter([
 				element: <LongComponent />,
 				children: [
 					{
-						path: "/inmate-enrollment",
-						element:<PersonalInfo />
+						path: "/inmate-enrollment/personal-info",
+						element: <PersonalInfo />,
+					},
+					{
+						path: "/inmate-enrollment/address",
+						element: <Address />
 					},
 				],
 			},
