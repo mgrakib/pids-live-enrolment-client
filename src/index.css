@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.short-container{
+    @apply w-[550px] h-[400px] border border-black flex items-center
+}
