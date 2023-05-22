@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { Link, useNavigate,  } from "react-router-dom";
 import { AuthContextAPI } from "../../../AuthProvder/AuthProvder";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 const Enrollment = () => {
 	const { setEnrollmentType } = useContext(AuthContextAPI);
 	const navigator = useNavigate();
+	const inmateType = useRef()
+
 	const {
 		register,
 		handleSubmit,
@@ -16,7 +18,7 @@ const Enrollment = () => {
 	} = useForm();
 
 	const onSubmit = data => {
-			
+		data.inmateType = inmateType.current.value;
 		setEnrollmentType(data);
 		navigator("/inmate-enrollment");
 	};
@@ -40,13 +42,14 @@ const Enrollment = () => {
 							name=''
 							id=''
 							className='w-[200px] p-1 outline-none'
+							ref={inmateType}
 						>
 							<option value='Under trial'>Under trial</option>
 							<option value='Convict'>Convict</option>
 						</select>
 					</div>
 					<label className='label'>
-						<span className='label-text'>Prisoner ID</span>
+						<span className='label-text bef'>Prisoner ID</span>
 					</label>
 					<div>
 						<input
@@ -54,6 +57,7 @@ const Enrollment = () => {
 							id=''
 							className='w-[200px] p-1 outline-none'
 							{...register("inmatId")}
+							required
 						/>
 					</div>
 				</div>
@@ -71,7 +75,6 @@ const Enrollment = () => {
 					>
 						Next
 					</button>
-					
 				</div>
 			</form>
 		</div>

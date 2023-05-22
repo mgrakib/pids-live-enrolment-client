@@ -1,29 +1,45 @@
+/** @format */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+. {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
-.short-container{
-    @apply w-[550px] h-[400px] flex items-center
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
-.short-component{
-    @apply w-[calc(100%-50px)] h-full bg-[#E2E2E2] p-5
+.short-container {
+	@apply w-[550px] h-[400px] flex items-center;
+}
+
+.short-component {
+	@apply w-[calc(100%-50px)] h-full bg-[#E2E2E2] p-5;
 }
 
 .action-btn {
-    @apply bg-white rounded-md flex items-center justify-center p-2 h-[60px] cursor-pointer border border-gray-500 hover:shadow-[1px_1px_2px_rgba(0,0,0,.5)] duration-150 text-3xl
+	@apply bg-white rounded-md flex items-center justify-center p-2 h-[60px] cursor-pointer border border-gray-500 hover:shadow-[1px_1px_2px_rgba(0,0,0,.5)] duration-150 text-3xl;
 }
 .btn-text {
-    @apply text-[12px] font-bold mt-2
+	@apply text-[12px] font-bold mt-2;
 }
-
 
 .long-component-tab {
-    @apply border border-gray-500 rounded-tl-md rounded-tr-md border-b-0 text-center cursor-pointer
+	@apply border border-gray-500 rounded-tl-md rounded-tr-md border-b-0 text-center cursor-pointer;
 }
+
+.require-field {
+	@apply before:content-['*'] before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-2 before:text-red-500;
+}
+
+.input-field {
+    @apply border-b outline-none border-black bg-[#ffffffbc]  px-2 text-[14px] py-[2px] rounded-sm
+}
+

@@ -1,7 +1,7 @@
-import React from 'react';
 import { useContext } from 'react';
 import { FaRegWindowClose, FaUserCheck } from 'react-icons/fa';
 import { AuthContextAPI } from '../../AuthProvder/AuthProvder';
+import { Outlet } from 'react-router-dom';
 
 const LongComponent = () => {
     const { enrollmentType } = useContext(AuthContextAPI)
@@ -35,7 +35,7 @@ const LongComponent = () => {
 				<div>
 					PRISONER STATE{" "}
 					<span className='font-bold text-xl'>
-						In Prison Under Trial
+						In Prison {enrollmentType.inmateType}
 					</span>
 				</div>
 			</div>
@@ -50,6 +50,10 @@ const LongComponent = () => {
 				<div className='long-component-tab'>Health Info</div>
 				<div className='long-component-tab'>Visitor Info</div>
 				<div className='long-component-tab'>Call Center</div>
+			</div>
+
+			<div className='py-5'>
+				<Outlet />
 			</div>
 		</div>
 	);

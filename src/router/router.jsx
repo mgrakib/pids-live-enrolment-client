@@ -10,6 +10,7 @@ import Login from "../components/Login/Login";
 import PrivateRoute from "../Private/PrivateRoute";
 import Register from "../components/Register/Register";
 import LongComponent from "../components/LongComponent/LongComponent";
+import PersonalInfo from "../components/LongComponent/PersonalInfo/PersonalInfo";
 
 
 const router = createBrowserRouter([
@@ -49,9 +50,15 @@ const router = createBrowserRouter([
 				],
 			},
 			{
-				path: '/inmate-enrollment',
-				element: <LongComponent />
-			}
+				path: "/inmate-enrollment",
+				element: <LongComponent />,
+				children: [
+					{
+						path: "/inmate-enrollment",
+						element:<PersonalInfo />
+					},
+				],
+			},
 		],
 	},
 ]);
