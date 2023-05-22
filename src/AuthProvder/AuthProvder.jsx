@@ -46,6 +46,19 @@ const AuthProvder = ({ children }) => {
 
     }
 
+
+
+    // **************
+        // entry related 
+    const [enrollmentType, setEnrollmentType] = useState({});
+    // **************
+
+
+    console.log(enrollmentType);
+
+
+
+
     const authInfo = {
 		user,
 		loading,
@@ -53,6 +66,8 @@ const AuthProvder = ({ children }) => {
 		updateUserNamePhoto,
 		logOut,
 		userLogIn,
+		enrollmentType,
+		setEnrollmentType,
 	};
     return (
         <AuthContextAPI.Provider value={authInfo}>

@@ -9,6 +9,7 @@ import Enrollment from "../components/SortComponent/Enrollment/Enrollment";
 import Login from "../components/Login/Login";
 import PrivateRoute from "../Private/PrivateRoute";
 import Register from "../components/Register/Register";
+import LongComponent from "../components/LongComponent/LongComponent";
 
 
 const router = createBrowserRouter([
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
 					},
 				],
 			},
+			{
+				path: '/inmate-enrollment',
+				element: <LongComponent />
+			}
 		],
 	},
 ]);

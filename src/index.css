@@ -22,3 +22,8 @@
 .btn-text {
     @apply text-[12px] font-bold mt-2
 }
+
+
+.long-component-tab {
+    @apply border border-gray-500 rounded-tl-md rounded-tr-md border-b-0 text-center cursor-pointer
+}
