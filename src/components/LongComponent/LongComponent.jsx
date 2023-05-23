@@ -40,30 +40,96 @@ const LongComponent = () => {
 			</div>
 
 			<div className='grid md:grid-cols-9 gap-3 border-b border-gray-500'>
-				<div className='long-component-tab'>Biometric Info</div>
+				<NavLink
+					to={"/inmate-enrollment/biometric"}
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
+				>
+					Biometric Info
+				</NavLink>
 				<NavLink
 					to={"/inmate-enrollment/personal-info"}
-					className='long-component-tab'
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
 				>
 					Personal Info
 				</NavLink>
 				<NavLink
 					to={"/inmate-enrollment/address"}
-					className='long-component-tab'
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
 				>
 					Address
 				</NavLink>
 				<NavLink
 					to={"/inmate-enrollment/family"}
-					className='long-component-tab'
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
 				>
 					Family
 				</NavLink>
-				<div className='long-component-tab'>Eucation</div>
-				<div className='long-component-tab'>Case Info</div>
-				<div className='long-component-tab'>Health Info</div>
-				<div className='long-component-tab'>Visitor Info</div>
-				<div className='long-component-tab'>Call Center</div>
+				<NavLink
+					to={"/inmate-enrollment/education"}
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
+				>
+					Eucation
+				</NavLink>
+				<NavLink
+					to={"/inmate-enrollment/case-info"}
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
+				>
+					Case Info
+				</NavLink>
+				<NavLink
+					to={"/inmate-enrollment/helth"}
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
+				>
+					Health Info
+				</NavLink>
+				<NavLink
+					to={"/inmate-enrollment/visitor"}
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
+				>
+					Visitor Info
+				</NavLink>
+				<NavLink
+					to={"/inmate-enrollment/call-center"}
+					className={({ isActive }) =>
+						isActive
+							? "active-link long-component-tab"
+							: "default-link long-component-tab"
+					}
+				>
+					Call Center
+				</NavLink>
 			</div>
 
 			<div className='py-5'>

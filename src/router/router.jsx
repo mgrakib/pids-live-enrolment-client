@@ -13,6 +13,11 @@ import LongComponent from "../components/LongComponent/LongComponent";
 import PersonalInfo from "../components/LongComponent/PersonalInfo/PersonalInfo";
 import Address from "../components/LongComponent/Address/Address";
 import Family from "../components/LongComponent/Family/Family";
+import Education from "../components/LongComponent/Education/Education";
+import Visitor from "../components/LongComponent/Visitor/Visitor";
+import CallCenter from "../components/LongComponent/CallCenter/CallCenter";
+import CaseInfo from "../components/LongComponent/CaseInfo/CaseInfo";
+import Biometric from "../components/LongComponent/Biometric/Biometric";
 
 
 const router = createBrowserRouter([
@@ -56,6 +61,10 @@ const router = createBrowserRouter([
 				element: <LongComponent />,
 				children: [
 					{
+						path: "/inmate-enrollment/biometric",
+						element: <Biometric />,
+					},
+					{
 						path: "/inmate-enrollment/personal-info",
 						element: <PersonalInfo />,
 					},
@@ -66,6 +75,26 @@ const router = createBrowserRouter([
 					{
 						path: "/inmate-enrollment/family",
 						element: <Family />,
+					},
+					{
+						path: "/inmate-enrollment/education",
+						element: <Education />,
+					},
+					{
+						path: "/inmate-enrollment/case-info",
+						element: <CaseInfo />,
+					},
+					{
+						path: "/inmate-enrollment/helth",
+						element: <Education />,
+					},
+					{
+						path: "/inmate-enrollment/visitor",
+						element: <Visitor />,
+					},
+					{
+						path: "/inmate-enrollment/call-center",
+						element: <CallCenter />,
 					},
 				],
 			},
