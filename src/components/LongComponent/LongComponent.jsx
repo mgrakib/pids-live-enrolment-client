@@ -53,7 +53,12 @@ const LongComponent = () => {
 				>
 					Address
 				</NavLink>
-				<div className='long-component-tab'>Family</div>
+				<NavLink
+					to={"/inmate-enrollment/family"}
+					className='long-component-tab'
+				>
+					Family
+				</NavLink>
 				<div className='long-component-tab'>Eucation</div>
 				<div className='long-component-tab'>Case Info</div>
 				<div className='long-component-tab'>Health Info</div>

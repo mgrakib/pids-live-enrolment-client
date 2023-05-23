@@ -12,6 +12,7 @@ import Register from "../components/Register/Register";
 import LongComponent from "../components/LongComponent/LongComponent";
 import PersonalInfo from "../components/LongComponent/PersonalInfo/PersonalInfo";
 import Address from "../components/LongComponent/Address/Address";
+import Family from "../components/LongComponent/Family/Family";
 
 
 const router = createBrowserRouter([
@@ -60,7 +61,11 @@ const router = createBrowserRouter([
 					},
 					{
 						path: "/inmate-enrollment/address",
-						element: <Address />
+						element: <Address />,
+					},
+					{
+						path: "/inmate-enrollment/family",
+						element: <Family />,
 					},
 				],
 			},

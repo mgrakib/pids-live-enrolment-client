@@ -72,7 +72,7 @@ const Address = () => {
 						</p>
 
 						{/* District  */}
-						<div className='flex flex-col'>
+						{/* <div className='flex flex-col'>
 							<label className='blcok'>
 								<span
 									className={`label-text require-field relative`}
@@ -96,10 +96,10 @@ const Address = () => {
 									</option>
 								))}
 							</select>
-						</div>
+						</div> */}
 
 						{/* Thana/Upozila  */}
-						<div className='flex flex-col'>
+						{/* <div className='flex flex-col'>
 							<label className='blcok'>
 								<span
 									className={`label-text require-field relative`}
@@ -123,9 +123,10 @@ const Address = () => {
 									</option>
 								))}
 							</select>
-						</div>
+						</div> */}
+
 						{/* Ward/Union  */}
-						<div className='flex flex-col'>
+						{/* <div className='flex flex-col'>
 							<label className='blcok'>
 								<span
 									className={`label-text require-field relative`}
@@ -149,9 +150,9 @@ const Address = () => {
 									</option>
 								))}
 							</select>
-						</div>
+						</div> */}
 						{/* Post Office  */}
-						<div className='flex flex-col'>
+						{/* <div className='flex flex-col'>
 							<label className='blcok'>
 								<span
 									className={`label-text require-field relative`}
@@ -175,6 +176,58 @@ const Address = () => {
 									</option>
 								))}
 							</select>
+						</div> */}
+						{/* District  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									District
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
+						</div>
+						{/* Upazila/Thana  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Upazila/Thana
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
+						</div>
+						{/* Union/Ward  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Union/Ward
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
+						</div>
+						{/* Post Office  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Post Office
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
 						</div>
 						{/* Villege/Town  */}
 						<div className='flex flex-col'>
@@ -231,8 +284,8 @@ const Address = () => {
 								<small>Same as Present Address</small>
 							</div>
 						</div>
-						{/* District  */}
-						<div className='flex flex-col'>
+						{/* District */}
+						{/* <div className='flex flex-col'>
 							<label className='blcok'>
 								<span
 									className={`label-text require-field relative`}
@@ -256,10 +309,9 @@ const Address = () => {
 									</option>
 								))}
 							</select>
-						</div>
-
+						</div> */}
 						{/* Thana/Upozila  */}
-						<div className='flex flex-col'>
+						{/* <div className='flex flex-col'>
 							<label className='blcok'>
 								<span
 									className={`label-text require-field relative`}
@@ -283,9 +335,9 @@ const Address = () => {
 									</option>
 								))}
 							</select>
-						</div>
+						</div> */}
 						{/* Ward/Union  */}
-						<div className='flex flex-col'>
+						{/* <div className='flex flex-col'>
 							<label className='blcok'>
 								<span
 									className={`label-text require-field relative`}
@@ -309,9 +361,9 @@ const Address = () => {
 									</option>
 								))}
 							</select>
-						</div>
+						</div> */}
 						{/* Post Office  */}
-						<div className='flex flex-col'>
+						{/* <div className='flex flex-col'>
 							<label className='blcok'>
 								<span
 									className={`label-text require-field relative`}
@@ -335,6 +387,58 @@ const Address = () => {
 									</option>
 								))}
 							</select>
+						</div> */}
+						{/* District  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									District
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
+						</div>
+						{/* Upazila/Thana  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Upazila/Thana
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
+						</div>
+						{/* Union/Ward  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Union/Ward
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
+						</div>
+						{/* Post Office  */}
+						<div className='flex flex-col'>
+							<label className='blcok'>
+								<span className={`label-text  relative`}>
+									Post Office
+								</span>
+							</label>
+							<input
+								{...register("banglaName")}
+								className='input-field '
+								required
+							/>
 						</div>
 						{/* Villege/Town  */}
 						<div className='flex flex-col'>
@@ -407,7 +511,6 @@ const Address = () => {
 							</select>
 						</div>
 
-						
 						{/* Street  */}
 						<div className='flex flex-col'>
 							<label className='blcok'>
